@@ -4,7 +4,7 @@ html, body {
     padding: 0;
 }
 .sidebar {
-    background-color: #4CAF50 !important; 
+    background-color: #4CAF50 !important;
     color: white !important;
 }
 
@@ -104,7 +104,7 @@ html, body {
     font-weight: bold;
 }
 
-@media (min-width: 1400px) { 
+@media (min-width: 1400px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
         max-width: 1580px;
     }
@@ -132,5 +132,5 @@ html, body {
 
 .active {
     background-color: #2f893a !important;
-    color: white; 
+    color: white;
 }
