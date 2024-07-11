@@ -30,7 +30,10 @@ export class AuthService {
 
     public async login(loginDetails: UserParams){
         try {
-            const user = await this.authRepository.findOne({ where: { username: loginDetails.username } });
+            const user = await this.authRepository.findOne({
+                where: { username: loginDetails.username },
+                relations: ['profile'],
+            });
             if (!user) {
                 throw new BadRequestException('Invalid username or password');
             }
@@ -39,7 +42,8 @@ export class AuthService {
                 throw new BadRequestException('Invalid username or password');
             }
             const payload = { username: user.username, password: loginDetails.password };
-            return this.jwtService.sign(payload);
+            const token = this.jwtService.sign(payload);
+            return{token, user}
         } catch (e) {
             console.log(e);
             throw new BadRequestException(e.message);

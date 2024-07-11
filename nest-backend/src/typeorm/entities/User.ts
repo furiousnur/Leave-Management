@@ -1,11 +1,12 @@
-import {Column, Entity,PrimaryGeneratedColumn} from "typeorm";
+import { Column, Entity, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Profile } from './Profile';
 
-@Entity({name: 'users'})
-export class User{
-    @PrimaryGeneratedColumn({type: "bigint"})
+@Entity({ name: 'users' })
+export class User {
+    @PrimaryGeneratedColumn({ type: 'bigint' })
     id: number;
 
-    @Column({unique: true})
+    @Column({ unique: true })
     username: string;
 
     @Column()
@@ -14,6 +15,9 @@ export class User{
     @Column()
     createdAt: Date;
 
-    @Column({nullable: true})
+    @Column({ nullable: true })
     updatedAt: Date;
+
+    @OneToOne(() => Profile, profile => profile.user)
+    profile: Profile;
 }

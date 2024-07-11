@@ -3,11 +3,10 @@ export type UserParams = {
     password: string;
 }
 
-export type AttendanceParams = {
+export type LeaveParams = {
     userId: number;
-    attendance_type: string;
-    date: string;
-    time_in: string;
-    time_out?: string;
-    remark?: string;
+    leave_type: string;
+    date_from: string;
+    date_to: string;
+    reason: string;
 }

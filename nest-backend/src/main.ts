@@ -7,7 +7,7 @@ import * as dotenv from 'dotenv';
 async function bootstrap() {
   dotenv.config();
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
-  app.enableCors(); 
+  app.enableCors();
   app.enableCors({
     origin: 'http://localhost:5173',
     methods: ['GET', 'POST'],
