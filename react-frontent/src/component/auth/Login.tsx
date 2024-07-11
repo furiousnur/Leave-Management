@@ -30,13 +30,15 @@ const Login: React.FC = () => {
         if (Object.values(data).every(value => value.trim() !== '')) {
             try {
                 const response = await loginUser(data);
-                console.log(response.data.error == "Bad Request")
                 if (response.data.error == "Bad Request") {
                     setErrorResponse(response.data.message);
                 } else {
                     setSuccessResponse(response.data.message);
-                    const token = response.data;
+                    const token = response.data.token;
+                    const userDetails = response.data.user;
                     localStorage.setItem('authToken', token);
+                    localStorage.setItem('userId', userDetails.id);
+                    localStorage.setItem('userDetails', JSON.stringify(userDetails));
                     window.location.href = '/dashboard';
                 }
             } catch (error) {
@@ -72,7 +74,7 @@ const Login: React.FC = () => {
                             onChange={handleChange}
                         />
                     </div>
-                    <button type="submit">Login</button>
+                    <button type="submit" style={{width: "100%"}}>Login</button>
                     <div className="forgot-password">
                         <a href="/forgot-password">Forgot Password?</a>
                     </div>
