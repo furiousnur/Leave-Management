@@ -35,3 +35,8 @@ export type RoleParams = {
     status?: string;
     permissions?: number[];
 }
+
+export type PermissionParams = {
+    name: string;
+    status?: string;
+}

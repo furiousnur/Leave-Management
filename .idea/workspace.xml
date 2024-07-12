@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3566544c-e295-4163-95da-6d0937bf81b3" name="Changes" comment="auth, leave crud and others part">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="3566544c-e295-4163-95da-6d0937bf81b3" name="Changes" comment="auth, leave crud and others part" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,7 +67,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/laragon/www/leave-management/nest-backend/src/typeorm/entities",
+    "last_opened_file_path": "D:/laragon/www/leave-management/nest-backend/src",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -79,8 +77,8 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\laragon\www\leave-management\nest-backend\src\typeorm\entities" />
       <recent name="D:\laragon\www\leave-management\nest-backend\src" />
+      <recent name="D:\laragon\www\leave-management\nest-backend\src\typeorm\entities" />
       <recent name="D:\laragon\www\leave-management\react-frontent\src\component\admin" />
       <recent name="D:\laragon\www\leave-management\react-frontent\src\component" />
       <recent name="D:\laragon\www\leave-management\react-frontent\src\component\auth" />
@@ -94,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720629016846</updated>
-      <workItem from="1720629021374" duration="15134000" />
+      <workItem from="1720629021374" duration="16668000" />
     </task>
     <task id="LOCAL-00001" summary="react packages installed">
       <created>1720631025676</created>

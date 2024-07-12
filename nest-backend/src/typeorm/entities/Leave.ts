@@ -21,7 +21,7 @@ export class Leave {
     date_from: string;
 
     @Column()
-    date_to: string;
+    date_to: string; 
 
     @Column({ default: 'pending' })
     status: string;

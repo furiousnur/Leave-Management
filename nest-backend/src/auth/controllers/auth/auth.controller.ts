@@ -1,15 +1,27 @@
-import {BadRequestException, Body, Controller, Get, HttpStatus, Post, Req, Res, UseGuards} from '@nestjs/common';
+import {
+    BadRequestException,
+    Body,
+    Controller,
+    Get,
+    HttpStatus,
+    Param,
+    ParseIntPipe,
+    Post,
+    Req,
+    Res,
+    UseGuards
+} from '@nestjs/common'; 
 import {Response, Request} from "express";
 import {AuthService} from "../../services/auth/auth.service";
 import {UserDto} from "../../dtos/user.dto";
-import {AuthDto} from "../../dtos/auth.dto";
+import {AuthDto} from "../../dtos/auth.dto"; 
 import {LocalGuards} from "../../guards/local.guards";
 import {JwtAuthGuards} from "../../guards/jwt.guards";
 
 @Controller('auth')
 export class AuthController {
     constructor(private authService: AuthService) {}
-
+    
     @Post('/create-user')
     async createUser(@Body() userDto:UserDto,@Res() res: Response){
         try {
@@ -26,9 +38,9 @@ export class AuthController {
     @Post('login')
     @UseGuards(LocalGuards)
     async login(@Body() loginDto: AuthDto) {
-        return this.authService.login(loginDto);
+        return this.authService.login(loginDto); 
     }
-
+    
     @Get('status')
     @UseGuards(JwtAuthGuards)
     async status(@Req() req:Request){
@@ -39,13 +51,20 @@ export class AuthController {
             throw new BadRequestException(e.message);
         }
     }
-
-    @Get('verify-token')
+    
+    @Get('verify-token/:userId')
     @UseGuards(JwtAuthGuards)
-    async verifyToken(@Req() req:Request){
+    async verifyToken(
+        @Param('userId', ParseIntPipe) userId: number,
+        @Req() req:Request, @Res() res: Response
+    ){
         try {
-            return 'Success';
-        }catch (e){
+            const data = await this.authService.verifyToken(userId);
+            return res.status(HttpStatus.OK).json({
+                message: 'Success',
+                data,
+            });
+        } catch (e) {
             throw new BadRequestException(e.message);
         }
     }

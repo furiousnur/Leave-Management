@@ -10,6 +10,9 @@ import { LeavesModule } from './leaves/leaves.module';
 import {Leave} from "./typeorm/entities/Leave";
 import { RolesModule } from './roles/roles.module';
 import {Role} from "./typeorm/entities/Role";
+import {PermissionsModule} from "./permissions/permissions.module";
+import {Permission} from "./typeorm/entities/Permission";
+import {RolePermission} from "./typeorm/entities/RolePermission";
 import {UserRole} from "./typeorm/entities/UserRole";
 
 @Module({
@@ -20,9 +23,9 @@ import {UserRole} from "./typeorm/entities/UserRole";
     username:'root',
     password:'',
     database:'leave_management',
-    entities:[User, Profile, Leave, Role, UserRole],
+    entities:[User, Profile, Leave, Role, Permission, RolePermission, UserRole],
     synchronize:true
-  }),AuthModule, UsersModule, LeavesModule, RolesModule],
+  }),AuthModule, UsersModule, LeavesModule, RolesModule, PermissionsModule],
   controllers: [AppController],
   providers: [AppService],
 })
