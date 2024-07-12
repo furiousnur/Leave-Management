@@ -29,3 +29,9 @@ export type LeaveParams = {
     reason: string;
     totalLeave: number;
 }
+
+export type RoleParams = {
+    name: string;
+    status?: string;
+    permissions?: number[];
+}

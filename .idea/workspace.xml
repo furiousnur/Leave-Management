@@ -69,7 +69,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/laragon/www/leave-management/nest-backend/src",
+    "last_opened_file_path": "D:/laragon/www/leave-management/nest-backend/src/typeorm/entities",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -79,11 +79,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\leave-management\nest-backend\src\typeorm\entities" />
       <recent name="D:\laragon\www\leave-management\nest-backend\src" />
       <recent name="D:\laragon\www\leave-management\react-frontent\src\component\admin" />
       <recent name="D:\laragon\www\leave-management\react-frontent\src\component" />
       <recent name="D:\laragon\www\leave-management\react-frontent\src\component\auth" />
-      <recent name="D:\laragon\www\leave-management\react-frontent\src\assets" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -94,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720629016846</updated>
-      <workItem from="1720629021374" duration="14046000" />
+      <workItem from="1720629021374" duration="15134000" />
     </task>
     <task id="LOCAL-00001" summary="react packages installed">
       <created>1720631025676</created>
