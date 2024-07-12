@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3566544c-e295-4163-95da-6d0937bf81b3" name="Changes" comment="auth system using jwt">
-      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/Leave.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/NewLeave.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/LeavePage.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/NewLeavePage.tsx" afterDir="false" />
+    <list default="true" id="3566544c-e295-4163-95da-6d0937bf81b3" name="Changes" comment="auth, leave crud and others part">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-frontent/src/ApiRequest/ApiRequest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/ApiRequest/ApiRequest.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-frontent/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-frontent/src/component/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/component/auth/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-frontent/src/layout/AdminLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/layout/AdminLayout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/react-frontent/src/layout/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/layout/Sidebar.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +94,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720629016846</updated>
-      <workItem from="1720629021374" duration="12953000" />
+      <workItem from="1720629021374" duration="14046000" />
     </task>
     <task id="LOCAL-00001" summary="react packages installed">
       <created>1720631025676</created>
@@ -147,7 +138,21 @@
       <option name="project" value="LOCAL" />
       <updated>1720637182955</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="auth, leave crud and others part">
+      <created>1720722733421</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1720722733421</updated>
+    </task>
+    <task id="LOCAL-00008" summary="auth, leave crud and others part">
+      <created>1720722738723</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1720722738723</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -169,6 +174,7 @@
     <MESSAGE value="react packages installed" />
     <MESSAGE value="Login page" />
     <MESSAGE value="auth system using jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="auth system using jwt" />
+    <MESSAGE value="auth, leave crud and others part" />
+    <option name="LAST_COMMIT_MESSAGE" value="auth, leave crud and others part" />
   </component>
 </project>

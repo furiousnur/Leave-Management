@@ -1,10 +1,10 @@
-import { IsNotEmpty, IsString } from 'class-validator';
+import {IsNotEmpty, IsNumber, IsString} from 'class-validator';
 
 export class LeaveDto {
     @IsNotEmpty()
-    @IsString()
+    @IsNumber()
     userId: number;
-
+ 
     @IsNotEmpty()
     @IsString()
     leave_type: string;
@@ -15,8 +15,11 @@ export class LeaveDto {
 
     @IsNotEmpty()
     @IsString()
-    date_to: string;
+    date_to: string; 
 
     @IsString()
     reason: string;
+    
+    @IsNumber()
+    totalLeave: number;
 }
