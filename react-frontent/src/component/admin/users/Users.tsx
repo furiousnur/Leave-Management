@@ -5,7 +5,7 @@ import { faCheck, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {acceptOrReject, hasPermission, setUserRole} from "../../../ApiRequest/ApiRequest";
 
-const Users = ({ list, page, total, totalPages, onPageChange, roles }) => {
+const Users = ({ list, roles }) => {
     const [users, setUsers] = useState(list || []);
     const [roleList, setRoleList] = useState(roles || []);
     const [searchTerm, setSearchTerm] = useState('');
@@ -94,15 +94,11 @@ const Users = ({ list, page, total, totalPages, onPageChange, roles }) => {
             user.userRole.role.name === selectedUsersType;
         return matchesSearchTerm && matchesUsersType;
     }) : [];
-
+    console.log(filteredUsers)
     const resetFilters = () => {
         setSearchTerm('');
         setSelectedUsersType('all');
     };
-
-    const startIndex = (page - 1) * 10;
-    const endIndex = startIndex + 10;
-    const visibleUsers = filteredUsers.slice(startIndex, endIndex);
 
     return (
         <div className="container mt-5">
@@ -149,8 +145,8 @@ const Users = ({ list, page, total, totalPages, onPageChange, roles }) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {visibleUsers.length > 0 ? (
-                        visibleUsers.map((user, index) => (
+                    {filteredUsers.length > 0 ? (
+                        filteredUsers.map((user, index) => (
                             <tr key={index}>
                                 <td>{user?.username || 'N/A'}</td>
                                 <td>{user.profile?.name || 'N/A'}</td>
@@ -216,22 +212,6 @@ const Users = ({ list, page, total, totalPages, onPageChange, roles }) => {
                     )}
                     </tbody>
                 </table>
-                {totalPages > 1 && (
-                    <div>
-                        <p>Total Pages: {totalPages} | Total Users: {total}</p>
-                        <nav>
-                            <ul className="pagination justify-content-end">
-                                {Array.from({ length: totalPages }).map((_, index) => (
-                                    <li key={index} className={`page-item ${page === index + 1 ? 'active' : ''}`}>
-                                        <button className="page-link" onClick={() => onPageChange(index + 1)}>
-                                            {index + 1}
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                    </div>
-                )}
             </div>
 
             {/* Role Modal */}
