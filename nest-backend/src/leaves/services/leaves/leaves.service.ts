@@ -11,24 +11,15 @@ export class LeavesService {
         @InjectRepository(Leave) private leaveRepository: Repository<Leave>
     ) {}
     
-    public async getLeave(page: number = 1, limit: number = 10) {
-        const [leaves, total] = await this.leaveRepository.findAndCount({
-            relations: ['user'],
-            take: limit,
-            skip: (page - 1) * limit,
+    public async getLeave() {
+        const [leaves] = await this.leaveRepository.findAndCount({
+            relations: ['user']
         });
 
         if (!leaves.length) {
             throw new NotFoundException('No leave found');
-        }
-        const totalPages = Math.ceil(total / limit);
-        return {
-            leaves,
-            total,
-            page,
-            totalPages,
-            limit,
-        };
+        } 
+        return leaves;
     }
 
     public async createLeave(LeaveDetails: LeaveParams) {
