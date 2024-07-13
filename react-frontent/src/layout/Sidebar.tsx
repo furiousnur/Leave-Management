@@ -21,7 +21,7 @@ const Sidebar: React.FC = () => {
     
     return (
         <div className="sidebar d-flex flex-column flex-shrink-0 p-3 bg-success text-white" style={{ height: "100vh" }}>
-            <div className="sidebar-heading h2">Employee Portal</div>
+            <div className="sidebar-heading h2">Leave Management</div>
             <ul className="nav nav-pills flex-column mb-auto">
                 {hasPermission('sidebar-dashboard') && (
                     <li className="nav-item">

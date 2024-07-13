@@ -2,6 +2,7 @@ import { Column, Entity, OneToOne, PrimaryGeneratedColumn, OneToMany } from 'typ
 import { Profile } from './Profile';
 import { Leave } from "./Leave";
 import {UserRole} from "./UserRole";
+import {LeaveBalance} from "./LeaveBalance";
 
 @Entity({ name: 'users' })
 export class User {
@@ -28,4 +29,7 @@ export class User {
     
     @OneToOne(() => UserRole, userRole => userRole.user, { eager: true })
     userRole: UserRole;
+
+    @OneToOne(() => LeaveBalance, leaveBalance => leaveBalance.user)
+    leaveBalance: LeaveBalance;
 }

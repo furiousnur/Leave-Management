@@ -15,6 +15,9 @@ import {Permission} from "./typeorm/entities/Permission";
 import {RolePermission} from "./typeorm/entities/RolePermission";
 import {UserRole} from "./typeorm/entities/UserRole";
 import { SeederService } from './seeder/services/seeder.service';
+import {LeaveBalance} from "./typeorm/entities/LeaveBalance";
+import {LeaveBalanceModule} from "./leave-balance/leave-balance.module";
+import {LoggerModule} from "./logger/logger.module";
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -24,9 +27,9 @@ import { SeederService } from './seeder/services/seeder.service';
     username:'root',
     password:'',
     database:'leave_management',
-    entities:[User, Profile, Leave, Role, Permission, RolePermission, UserRole],
+    entities:[User, Profile, Leave, Role, Permission, RolePermission, UserRole, LeaveBalance],
     synchronize:true
-  }),AuthModule, UsersModule, LeavesModule, RolesModule, PermissionsModule],
+  }),AuthModule, UsersModule, LeavesModule, RolesModule, PermissionsModule, LeaveBalanceModule, LoggerModule],
   controllers: [AppController],
   providers: [AppService, SeederService],
 })

@@ -20,7 +20,7 @@ export class UsersService {
     public async getUser() {
         const roles = await this.roleRepository.find();
         const [users] = await this.authRepository.findAndCount({
-            relations: ['profile', 'userRole', 'userRole.role'],
+            relations: ['profile', 'userRole', 'userRole.role', 'leaveBalance'],
         });
         if (!users.length) {
             throw new NotFoundException('No user found');

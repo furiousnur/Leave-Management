@@ -139,6 +139,7 @@ const Users = ({ list, roles }) => {
                         <th>Full Name</th>
                         <th>Department</th>
                         <th>Position</th>
+                        <th>Leave Balance</th>
                         <th>User Role Type</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -152,6 +153,7 @@ const Users = ({ list, roles }) => {
                                 <td>{user.profile?.name || 'N/A'}</td>
                                 <td>{user.profile?.department || 'N/A'}</td>
                                 <td>{user.profile?.position || 'N/A'}</td>
+                                <td>{user.leaveBalance?.totalBalance || '0'}</td>
                                 <td>
                                     {user.userRole?.role ? user.userRole.role.name : 'N/A'}
                                 </td>

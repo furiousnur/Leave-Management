@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 import {acceptOrRejectLeave, hasPermission} from "../../../ApiRequest/ApiRequest";
@@ -6,14 +6,14 @@ import { toast } from "react-toastify";
 import {faCheck, faSquareXmark} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-const Leave = ({ list, page, total, totalPages, onPageChange }) => {
+const Leave = ({ list }) => {
     
     const [leaves, setLeaves] = useState(list || []);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedLeaveType, setSelectedLeaveType] = useState('all');  
     useEffect(() => {
-        if (list && Array.isArray(list.leaves)) {
-            setLeaves(list.leaves);
+        if (list && Array.isArray(list)) {
+            setLeaves(list);
         } else {
             setLeaves([]);
         }
@@ -37,8 +37,7 @@ const Leave = ({ list, page, total, totalPages, onPageChange }) => {
 
         const matchesLeaveType = selectedLeaveType === 'all' || leave.leave_type === selectedLeaveType;
         return matchesSearchTerm && matchesLeaveType;
-    });
-
+    }); 
     const calculateNoOfDays = (dateFrom, dateTo) => {
         const from = new Date(dateFrom);
         const to = new Date(dateTo);
@@ -67,9 +66,6 @@ const Leave = ({ list, page, total, totalPages, onPageChange }) => {
             toast.error('Error processing leave request.');
         }
     }
-
-    const startIndex = (page - 1) * 10;
-    const visibleLeaves = filteredLeaves.slice(startIndex, startIndex + 10);
 
     return (
         <div className="container mt-5">
@@ -124,8 +120,8 @@ const Leave = ({ list, page, total, totalPages, onPageChange }) => {
                     </tr>
                     </thead>
                     <tbody>
-                    {visibleLeaves.length > 0 ? (
-                        visibleLeaves.map((leave, index) => (
+                    {filteredLeaves.length > 0 ? (
+                        filteredLeaves.map((leave, index) => (
                             <tr key={index}>
                                 <td>{leave.user.username}</td>
                                 <td>{leave.leave_type}</td>
@@ -140,7 +136,7 @@ const Leave = ({ list, page, total, totalPages, onPageChange }) => {
                                     </span>
                                 </td>
                                 <td>
-                                    {leave.status === 'pending' ? (
+                                    {leave.status === 'Pending' ? (
                                         <>
                                             {hasPermission('leave-accept-reject') && (
                                                 <>
@@ -165,23 +161,7 @@ const Leave = ({ list, page, total, totalPages, onPageChange }) => {
                         </tr>
                     )}
                     </tbody>
-                </table> 
-                {totalPages > 1 && (
-                    <div>  
-                        <p>Total Pages: {totalPages} | Total Leave: {total}</p> 
-                        <nav>
-                            <ul className="pagination justify-content-end">
-                                {Array.from({ length: totalPages }).map((_, index) => (
-                                    <li key={index} className={`page-item ${page === index + 1 ? 'active' : ''}`}>
-                                        <button className="page-link" onClick={() => onPageChange(index + 1)}>
-                                            {index + 1}
-                                        </button>
-                                    </li>
-                                ))}
-                            </ul>
-                        </nav>
-                    </div>
-                )}
+                </table>
             </div>
         </div>
     );
