@@ -21,6 +21,6 @@ import {Role} from "../typeorm/entities/Role";
   ],
   controllers: [UsersController],
   providers: [UsersService],
-  exports: [UsersService],
+  exports: [UsersService, TypeOrmModule.forFeature([User])],
 })
 export class UsersModule {}

@@ -5,15 +5,6 @@ import {hasPermission} from "../ApiRequest/ApiRequest";
 
 const Sidebar: React.FC = () => {
     const location = useLocation();
-    const [isAttendancesOpen, setIsAttendancesOpen] = useState(
-        location.pathname.startsWith("/attendances") 
-        || location.pathname.startsWith("/offline-attendances") 
-        || location.pathname.startsWith("/new-offline-attendance")
-    );
-    
-    const toggleAttendances = () => {
-        setIsAttendancesOpen(!isAttendancesOpen);
-    };
     const [isUsersOpen, setIsUsersOpen] = useState(
         location.pathname.startsWith("/users/list")
         || location.pathname.startsWith("/users/create")
@@ -77,10 +68,6 @@ const Sidebar: React.FC = () => {
                         </ul>
                     </li>
                 )}
-                <li><a href="#" className="nav-link text-white">Documents</a></li>
-                <li><a href="#" className="nav-link text-white">Awards</a></li>
-                <li><a href="#" className="nav-link text-white">Vacancies</a></li>
-                <li><a href="#" className="nav-link text-white">Time Sheet</a></li>
                 <li><Link to="/logout" className="nav-link text-white">Logout</Link></li>
                 {/*  Hidden sidebar for active  */}
                 <li className="nav-item" style={{display: "none"}}>

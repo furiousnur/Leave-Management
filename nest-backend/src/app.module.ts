@@ -14,6 +14,7 @@ import {PermissionsModule} from "./permissions/permissions.module";
 import {Permission} from "./typeorm/entities/Permission";
 import {RolePermission} from "./typeorm/entities/RolePermission";
 import {UserRole} from "./typeorm/entities/UserRole";
+import { SeederService } from './seeder/services/seeder.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
@@ -27,6 +28,6 @@ import {UserRole} from "./typeorm/entities/UserRole";
     synchronize:true
   }),AuthModule, UsersModule, LeavesModule, RolesModule, PermissionsModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, SeederService],
 })
 export class AppModule {}
