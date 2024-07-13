@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import '../../assets/css/Login.css';
 import {loginUser} from "../../ApiRequest/ApiRequest";
+import {toast} from "react-toastify";
 
 const Login: React.FC = () => {
     const [input, setInput] = useState({});
@@ -30,22 +31,22 @@ const Login: React.FC = () => {
         if (Object.values(data).every(value => value.trim() !== '')) {
             try {
                 const response = await loginUser(data);
-                if (response.data.error == "Bad Request") {
-                    setErrorResponse(response.data.message);
-                } else {
-                    setSuccessResponse(response.data.message);
+                if (response.data.error == "Bad Request") {  
+                    toast.error(response.data.message)
+                } else { 
                     const token = response.data.token;
                     const userDetails = response.data.user;
                     localStorage.setItem('authToken', token);
                     localStorage.setItem('userId', userDetails.id);
+                    localStorage.setItem('loginMsg', 'Login Successful');
                     localStorage.setItem('userDetails', JSON.stringify(userDetails));
                     window.location.href = '/dashboard';
                 }
             } catch (error) {
-                setErrors(error.response.data.errors);
+                toast.error(error.response.data.errors)
             }
         } else {
-            setErrorResponse("Fill up the form correctly");
+            toast.error("Fill up the form correctly");
         }
     }
 
@@ -53,26 +54,14 @@ const Login: React.FC = () => {
         <div className="login-page">
             <div className="login-container">
                 <h2>Login</h2>
-                {errorResponse && <div className="error-message">{errorResponse}</div>}
-                {successResponse && <div className="success-message">{successResponse}</div>}
                 <form onSubmit={handleForm}>
                     <div className="form-group">
                         <label htmlFor="username">Username:</label>
-                        <input
-                            type="text"
-                            id="username"
-                            name="username"
-                            onChange={handleChange}
-                        />
+                        <input type="text" id="username" name="username" onChange={handleChange} placeholder="Enter username"/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="password">Password:</label>
-                        <input
-                            type="password"
-                            id="password"
-                            name="password"
-                            onChange={handleChange}
-                        />
+                        <input type="password" id="password" name="password" onChange={handleChange} placeholder="Enter password"/>
                     </div>
                     <button type="submit" style={{width: "100%"}}>Login</button>
                     <div className="forgot-password">

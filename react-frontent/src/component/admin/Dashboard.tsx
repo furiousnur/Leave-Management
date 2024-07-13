@@ -1,16 +1,28 @@
-import React from "react";
-const Dashboard: React.FC = () => {
+import React, { useEffect, useState } from "react";
+
+const Dashboard: React.FC<{ userDetails: any }> = (props) => {
+    const { userDetails } = props;
+    const [profile, setProfile] = useState(null);
+
+    useEffect(() => {
+        if (userDetails && userDetails.profile) {
+            setProfile(userDetails.profile);
+        }
+    }, [userDetails]);
+
     return (
-        <>
-            <div className="profile-balance-container">
-                <div className="profile">
-                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Profile Picture" />
-                    <h3>MD. Nur Alam</h3>
-                    <p>Software Engineer</p>
-                    <p>Department: Delivery</p>
-                    <p>Username: md. nur @10401</p>
+        <div className="container">
+            <div className="row profile-balance-container mb-4">
+                <div className="col-md-6 profile d-flex align-items-center">
+                    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Profile Picture" className="me-3" />
+                    <div>
+                        <h3>{profile?.name || 'N/A'}</h3>
+                        <p>{profile?.position || 'N/A'}</p>
+                        <p>Department: {profile?.department || 'N/A'}</p>
+                        <p>Username: {userDetails?.username || 'N/A'}</p>
+                    </div>
                 </div>
-                <div className="balance">
+                <div className="col-md-6 balance">
                     <h2>Leave Balance</h2>
                     <div className="value">22.5</div>
                     <div className="label">BALANCE LEAVES</div>
@@ -21,8 +33,8 @@ const Dashboard: React.FC = () => {
 
             <div className="timesheet">
                 <h2>Your Missed TimeSheet (till last Monday)!</h2>
-                <table>
-                    <thead>
+                <table className="table table-bordered">
+                    <thead className="table-light">
                     <tr>
                         <th>11-Mar-2022</th>
                         <th>18-Mar-2022</th>
@@ -60,7 +72,7 @@ const Dashboard: React.FC = () => {
                     </tbody>
                 </table>
             </div>
-        </>
+        </div>
     );
 };
 

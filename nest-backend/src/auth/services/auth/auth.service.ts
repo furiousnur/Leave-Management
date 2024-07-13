@@ -36,7 +36,7 @@ export class AuthService {
     
     public async login(loginDetails: UserParams){
         try {
-            const user = await this.authRepository.findOne({ 
+            const userDetails = await this.authRepository.findOne({ 
                 where: { username: loginDetails.username },
                 relations: [
                     'profile',
@@ -46,16 +46,22 @@ export class AuthService {
                     'userRole.role.permissions.permission'
                 ],
             });
-            if (!user) {
+            if (!userDetails) {
                 throw new BadRequestException('Invalid username or password');
             }
-            const isMatch = await bcrypt.compare(loginDetails.password, user.password);
+            const isMatch = await bcrypt.compare(loginDetails.password, userDetails.password);
             if (!isMatch) {
                 throw new BadRequestException('Invalid username or password');
             } 
-            const payload = { username: user.username, password: loginDetails.password };
+            const payload = { username: userDetails.username, password: loginDetails.password };
             const token = this.jwtService.sign(payload);
-            return{token, user}
+            const user = {
+                id: userDetails.id,
+                username: userDetails.username,
+                profile: userDetails.profile,
+                userRole: userDetails.userRole,
+            };
+            return{token, user};
         } catch (e) {
             console.log(e);
             throw new BadRequestException(e.message);
@@ -76,17 +82,6 @@ export class AuthService {
             if (!user) {
                 throw new BadRequestException('Invalid user id');
             }
-
-            /*const permission = await this.permissionRepository.findOne({
-                where: { name: permissionName },
-            });
-            console.log('permission', permission);
-            if (!permission) {
-                throw new BadRequestException('Permission not found');
-            }
-            user['hasPermission'] = user.userRole.role.permissions.some(
-                (rolePermission) => rolePermission.permission.name === permissionName,
-            );*/
             return user;
         } catch (e) {
             throw new BadRequestException(e.message);

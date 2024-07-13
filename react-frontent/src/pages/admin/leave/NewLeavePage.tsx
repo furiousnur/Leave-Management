@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
-import AdminLayout from "../../layout/AdminLayout";
-import NewLeave from "../../component/admin/NewLeave";
+import React, { useEffect } from 'react'; 
+import AdminLayout from "../../../layout/AdminLayout";  
+import NewLeave from "../../../component/admin/leave/NewLeave";
 
 const NewLeavePage: React.FC = () => {
     useEffect(() => {

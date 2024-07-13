@@ -1,7 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3566544c-e295-4163-95da-6d0937bf81b3" name="Changes" comment="auth, leave crud and others part" />
+    <list default="true" id="3566544c-e295-4163-95da-6d0937bf81b3" name="Changes" comment="auth, leave crud and others part">
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/ProtectedRoute.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/permissions/DeletePermission.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/permissions/EditPermission.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/permissions/NewPermission.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/permissions/Permissions.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/roles/DeleteRole.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/roles/EditRole.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/roles/NewRole.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/roles/Roles.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/users/EditUser.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/users/NewUser.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/users/Users.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/leave/LeavePage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/permissions/EditPermissionPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/permissions/NewPermissionPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/permissions/PermissionPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/roles/EditRolePage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/roles/NewRolePage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/roles/RolePage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/users/EditUserPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/users/NewUserPage.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/users/UsersPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/ApiRequest/ApiRequest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/ApiRequest/ApiRequest.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/component/admin/Dashboard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/Dashboard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/component/admin/Leave.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/leave/Leave.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/component/admin/NewLeave.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/component/admin/leave/NewLeave.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/component/auth/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/component/auth/Login.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/layout/AdminLayout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/layout/AdminLayout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/layout/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/layout/Sidebar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/pages/admin/DashboardPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/DashboardPage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/pages/admin/LeavePage.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/pages/admin/NewLeavePage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/pages/admin/leave/NewLeavePage.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/react-frontent/src/pages/auth/LoginPage.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/react-frontent/src/pages/auth/LoginPage.tsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -67,7 +103,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.laravel-idea.search-composer-json": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/laragon/www/leave-management/nest-backend/src",
+    "last_opened_file_path": "D:/laragon/www/leave-management/react-frontent/src/pages/auth",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
@@ -77,11 +113,14 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\laragon\www\leave-management\nest-backend\src" />
-      <recent name="D:\laragon\www\leave-management\nest-backend\src\typeorm\entities" />
-      <recent name="D:\laragon\www\leave-management\react-frontent\src\component\admin" />
-      <recent name="D:\laragon\www\leave-management\react-frontent\src\component" />
+      <recent name="D:\laragon\www\leave-management\react-frontent\src\pages\auth" />
+      <recent name="D:\laragon\www\leave-management\react-frontent\src\pages\admin" />
+      <recent name="D:\laragon\www\leave-management\react-frontent\src\layout" />
       <recent name="D:\laragon\www\leave-management\react-frontent\src\component\auth" />
+      <recent name="D:\laragon\www\leave-management\react-frontent\src\component\admin" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\laragon\www\leave-management\react-frontent\src\component" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -92,7 +131,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1720629016846</updated>
-      <workItem from="1720629021374" duration="16668000" />
+      <workItem from="1720629021374" duration="27585000" />
     </task>
     <task id="LOCAL-00001" summary="react packages installed">
       <created>1720631025676</created>
