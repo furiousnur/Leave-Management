@@ -4,20 +4,15 @@ import {loginUser} from "../../ApiRequest/ApiRequest";
 import {toast} from "react-toastify";
 
 const Login: React.FC = () => {
-    const [input, setInput] = useState({});
-    const [successResponse, setSuccessResponse] = useState("");
-    const [errorResponse, setErrorResponse] = useState("");
-    const [errors, setErrors] = useState({});
+    const [input, setInput] = useState({}); 
 
     useEffect(() => {
-        const timer = setTimeout(() => {
-            setSuccessResponse("");
-            setErrorResponse("");
-        }, 30000);
-        return () => {
-            clearTimeout(timer);
+        const msg = localStorage.getItem('logoutMsg');
+        if (msg) {
+            toast.success(msg);
         }
-    }, [successResponse, errorResponse]);
+        localStorage.removeItem('logoutMsg');
+    }, []);
 
     const handleChange = (e) => setInput({
         ...input,

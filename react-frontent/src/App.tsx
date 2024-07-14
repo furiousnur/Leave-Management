@@ -64,8 +64,7 @@ function App() {
         <Routes>
             {tokenValid ? (
                 <>
-                    <Route path="/dashboard" element={<DashboardPage />} />
-                    {/*<Route path="/dashboard" element={<ProtectedRoute element={DashboardPage} hasPermission={hasPermission('sidebar-dashboard')} />} />*/}
+                    <Route path="/dashboard" element={<ProtectedRoute element={DashboardPage} hasPermission={hasPermission('sidebar-dashboard')} />} />
                     <Route path="/leaves" element={<ProtectedRoute element={LeavePage} hasPermission={hasPermission('leave-list')} />} />
                     <Route path="/leaves/create" element={<ProtectedRoute element={NewLeavePage} hasPermission={hasPermission('leave-create')} />} />
                     <Route path="/users/list" element={<ProtectedRoute element={UsersPage} hasPermission={hasPermission('user-list')} />} />

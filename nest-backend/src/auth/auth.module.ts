@@ -10,18 +10,20 @@ import {JwtStrategy} from "./strategies/jwt.strategy";
 import {RolePermission} from "../typeorm/entities/RolePermission";
 import {Permission} from "../typeorm/entities/Permission";
 import {UserRole} from "../typeorm/entities/UserRole";
+import {JwtAuthGuards} from "./guards/jwt.guards";
 
 @Module({
   imports:[
       PassportModule,
       TypeOrmModule.forFeature([User, RolePermission, Permission, UserRole]),
       JwtModule.register({
-        secret: 'abc123',
-        signOptions: { expiresIn: '120m' },
+          secret: process.env.JWT_SECRET || 'abc123',
+          signOptions: { expiresIn: '120m' },
       }),
   ],
   controllers: [AuthController],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
+  providers: [AuthService, LocalStrategy, JwtStrategy, JwtAuthGuards],
   exports: [AuthService],
 })
 export class AuthModule {}
+ 

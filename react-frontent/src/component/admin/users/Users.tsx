@@ -27,15 +27,15 @@ const Users = ({ list, roles }) => {
         setSelectedUsersType(e.target.value);
     };
 
-    async function acceptRejectHandle(status, userId) {
+    const acceptRejectHandle = async (status, userId) => {
         try {
             const res = await acceptOrReject(status, userId, 'users');
             if (res.statusText === 'OK') {
-                toast.success('User status updated successfully.');
                 const updatedUsers = users.map(user =>
                     user.id === userId ? { ...user, profile: { ...user.profile, status: status } } : user
                 );
                 setUsers(updatedUsers);
+                toast.success('User status updated successfully.');
             } else {
                 toast.error('Failed to update user status.');
             }
@@ -43,7 +43,8 @@ const Users = ({ list, roles }) => {
             console.error('Error processing user request:', error);
             toast.error('Error processing user request.');
         }
-    }
+    };
+
     const handleShowModal = (user) => {
         setSelectedUser(user);
         setShowModal(true);
@@ -59,14 +60,17 @@ const Users = ({ list, roles }) => {
     const handleSetRole = async () => {
         if (selectedUser && selectedRole) {
             try {
-                const res = await setUserRole(selectedUser.id, selectedRole); 
+                const res = await setUserRole(selectedUser.id, selectedRole);
                 if (res.statusText === 'OK') {
-                    toast.success('User role updated successfully.');
+                    const role = roleList.find(r => r.id == selectedRole);
                     const updatedUsers = users.map(user =>
-                        user.id === selectedUser.id ? { ...user, userRole: { roleId: selectedRole.id, role: user.userRole.role } } : user
+                        user.id === selectedUser.id
+                            ? { ...user, userRole: { roleId: selectedRole, role } }
+                            : user
                     );
                     setUsers(updatedUsers);
                     handleCloseModal();
+                    toast.success('User role updated successfully.');
                 } else {
                     toast.error('Failed to update user role.');
                 }
@@ -87,14 +91,15 @@ const Users = ({ list, roles }) => {
             (profile.name && profile.name.toLowerCase().includes(searchTerm.toLowerCase())) ||
             (profile.status && profile.status.toLowerCase().includes(searchTerm.toLowerCase()));
 
-        const matchesUsersType = selectedUsersType === 'all' || 
-            profile.position === selectedUsersType || 
-            profile.name === selectedUsersType || 
-            profile.department === selectedUsersType || 
-            user.userRole.role.name === selectedUsersType;
+        const matchesUsersType = selectedUsersType === 'all' ||
+            profile.position === selectedUsersType ||
+            profile.name === selectedUsersType ||
+            profile.department === selectedUsersType ||
+            (user.userRole?.role?.name === selectedUsersType);
+
         return matchesSearchTerm && matchesUsersType;
     }) : [];
-    console.log(filteredUsers)
+
     const resetFilters = () => {
         setSearchTerm('');
         setSelectedUsersType('all');
@@ -166,18 +171,18 @@ const Users = ({ list, roles }) => {
                                     <div className="d-flex">
                                         <div className="d-flex">
                                             {user.profile.status === 'Pending' ? (
-                                                <>
-                                                    {hasPermission('user-accept-reject') && (
-                                                        <>
-                                                            <button className="btn btn-success me-2 ms-2" onClick={() => acceptRejectHandle('Accepted', user.id)}>
-                                                                <FontAwesomeIcon icon={faCheck} />
-                                                            </button>
-                                                            <button className="btn btn-danger" onClick={() => acceptRejectHandle('Rejected', user.id)}>
-                                                                <FontAwesomeIcon icon={faSquareXmark} />
-                                                            </button>
-                                                        </>
-                                                    )}
-                                                </>
+                                                    <>
+                                                        {hasPermission('user-accept-reject') && (
+                                                            <>
+                                                                <button className="btn btn-success me-2 ms-2" onClick={() => acceptRejectHandle('Accepted', user.id)}>
+                                                                    <FontAwesomeIcon icon={faCheck} />
+                                                                </button>
+                                                                <button className="btn btn-danger" onClick={() => acceptRejectHandle('Rejected', user.id)}>
+                                                                    <FontAwesomeIcon icon={faSquareXmark} />
+                                                                </button>
+                                                            </>
+                                                        )}
+                                                    </>
                                                 ) :
                                                 <>
                                                     {hasPermission('user-edit') && (

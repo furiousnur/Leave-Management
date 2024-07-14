@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';  
+import React, { useEffect } from 'react';
+import {logout} from "../../ApiRequest/ApiRequest";  
 
 const Logout = () => {
     useEffect(() => {
         const performLogout = async () => {
             try {
-                const authToken = localStorage.getItem('authToken');
-                if (!authToken) {
-                    throw new Error("No token found");
-                } 
+                await logout();
                 localStorage.removeItem('authToken');
                 localStorage.removeItem('userId');
                 localStorage.setItem('logoutMsg', 'Logout Successful');

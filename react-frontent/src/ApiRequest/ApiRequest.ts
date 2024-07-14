@@ -32,7 +32,7 @@ export function hasPermission(permissionName: string | string[]) {
 // logout function
 export async function logout() {
     try {
-        return await axios.get(localBaseUrl + "/logout", {
+        return await axios.get(localBaseUrl + "/auth/logout", {
             headers: {
                 Authorization: `Bearer ${accessToken}`,
             },

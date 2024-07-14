@@ -8,6 +8,8 @@ import {JwtService} from "@nestjs/jwt";
 import {RolePermission} from "../../../typeorm/entities/RolePermission";
 import {Permission} from "../../../typeorm/entities/Permission";
 import {UserRole} from "../../../typeorm/entities/UserRole";
+import {TokenBlacklistService} from "../TokenBlacklistService";
+import {JwtAuthGuards} from "../../guards/jwt.guards";
 
 @Injectable()
 export class AuthService {
@@ -16,6 +18,7 @@ export class AuthService {
         @InjectRepository(RolePermission) private rolePermissionRepository: Repository<RolePermission>,
         @InjectRepository(Permission) private permissionRepository: Repository<Permission>,
         @InjectRepository(UserRole) private readonly userRoleRepository: Repository<UserRole>,
+        private readonly jwtAuthGuards: JwtAuthGuards,
         private jwtService: JwtService,
     ) {}
 
@@ -66,7 +69,11 @@ export class AuthService {
             console.log(e);
             throw new BadRequestException(e.message);
         }
-    } 
+    }
+
+    async logout(token: string): Promise<void> {
+        this.jwtAuthGuards.addTokenToBlacklist(token);
+    }
     
     public async verifyToken(userId: number){
         try {

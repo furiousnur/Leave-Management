@@ -9,19 +9,7 @@ const NewLeave: React.FC = () => {
     const userDetails = localStorage.getItem('userDetails');
     const userName = userDetails ? JSON.parse(userDetails).username : '';
     const userId = userDetails ? parseInt(JSON.parse(userDetails).id, 10) : null;
-    const [successResponse, setSuccessResponse] = useState('');
-    const [errorResponse, setErrorResponse] = useState('');
     const navigate = useNavigate();
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setSuccessResponse('');
-            setErrorResponse('');
-        }, 3000);
-        return () => {
-            clearTimeout(timer);
-        };
-    }, [successResponse, errorResponse]);
 
     const calculateNoOfDays = (dateFrom, dateTo) => {
         if (!dateFrom || !dateTo) return 0;
@@ -71,15 +59,18 @@ const NewLeave: React.FC = () => {
     });
 
     useEffect(() => {
-        const { date_from, date_to } = formik.values;
-        formik.setFieldValue('totalLeave', calculateNoOfDays(date_from, date_to));
-    }, [formik.values.date_from, formik.values.date_to]);
+        if (formik.values.leave_type === formik.values.leave_type === 'Comp Off (Half Day)') {
+            formik.setFieldValue('totalLeave', 0.5);
+            return;
+        }else{
+            const { date_from, date_to } = formik.values;
+            formik.setFieldValue('totalLeave', calculateNoOfDays(date_from, date_to));
+        }
+    }, [formik.values.date_from, formik.values.date_to, formik.values.leave_type]);
 
     return (
         <div className="container mt-5 mb-5">
             <h3 className="me-3">New Leaves / Comp Off</h3>
-            {errorResponse && <h4 className="error-message">{errorResponse}</h4>}
-            {successResponse && <h4 className="success-message">{successResponse}</h4>}
             <div className="mt-3">
                 <form onSubmit={formik.handleSubmit} className="p-3 border rounded">
                     <div className="mb-3">

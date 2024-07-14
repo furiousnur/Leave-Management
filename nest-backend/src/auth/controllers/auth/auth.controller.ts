@@ -40,6 +40,15 @@ export class AuthController {
     async login(@Body() loginDto: AuthDto) {
         return this.authService.login(loginDto); 
     }
+
+    @Post('logout')
+    async logout(@Req() request: any) {
+        const token = request.headers['authorization']?.split(' ')[1];
+        if (token) {
+            await this.authService.logout(token);
+        }
+        return { message: 'Logged out successfully' };
+    }
     
     @Get('status')
     @UseGuards(JwtAuthGuards)
