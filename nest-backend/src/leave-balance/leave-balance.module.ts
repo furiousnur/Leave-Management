@@ -15,6 +15,7 @@ import { LeaveBalanceController } from './controllers/leave-balance/leave-balanc
       LoggerModule
   ],
   controllers: [LeaveBalanceController],
-  providers: [LeaveBalanceService]
+  providers: [LeaveBalanceService],
+  exports: [LeaveBalanceService, TypeOrmModule.forFeature([LeaveBalance])],
 })
 export class LeaveBalanceModule {}

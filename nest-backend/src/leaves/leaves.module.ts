@@ -6,13 +6,15 @@ import {PassportModule} from "@nestjs/passport";
 import {JwtModule} from "@nestjs/jwt";
 import {TypeOrmModule} from "@nestjs/typeorm"; 
 import {Leave} from "../typeorm/entities/Leave";
+import {LeaveBalance} from "../typeorm/entities/LeaveBalance";
+import {User} from "../typeorm/entities/User";
 
 @Module({
     imports: [
       AuthModule,
       PassportModule,
       JwtModule,
-      TypeOrmModule.forFeature([Leave]),
+      TypeOrmModule.forFeature([Leave, LeaveBalance, User])
     ],
     controllers: [LeavesController],
     providers: [LeavesService],
